@@ -9,11 +9,11 @@ import org.apache.commons.math3.linear.RealVector;
 public class EstadoInicial {
 
 
-    private HashMap<String,RealMatrix> matrices = new HashMap<String,RealMatrix>();
+    private HashMap<String,Array2DRowRealMatrix> matrices = new HashMap<String,Array2DRowRealMatrix>();
     private HashMap<String,ArrayRealVector> vectores = new HashMap<String,ArrayRealVector>();
 
     public void cargarMatriz(String nombre,double datos[][]) {
-        RealMatrix matriz = new Array2DRowRealMatrix(datos);
+        Array2DRowRealMatrix matriz = new Array2DRowRealMatrix(datos);
         if (nombre == "Marking"){
             ArrayRealVector v = new ArrayRealVector(matriz.getRow(1));
             this.vectores.put(nombre,v);
@@ -35,7 +35,7 @@ public class EstadoInicial {
         this.vectores.remove(nombre);
     }
 
-    public HashMap<String, RealMatrix> getMatrices() {
+    public HashMap<String, Array2DRowRealMatrix> getMatrices() {
         return matrices;
     }
 

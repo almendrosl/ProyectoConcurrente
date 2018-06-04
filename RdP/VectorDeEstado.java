@@ -3,7 +3,7 @@ package RdP;
 import org.apache.commons.math3.linear.ArrayRealVector;
 import org.apache.commons.math3.linear.RealVector;
 
-public class VectorDeEstado extends ArrayRealVector {
+public class VectorDeEstado {
 
     private ArrayRealVector v;
 

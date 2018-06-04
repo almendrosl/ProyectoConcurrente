@@ -2,7 +2,7 @@ package RdP;
 import org.apache.commons.math3.linear.ArrayRealVector;
 import org.apache.commons.math3.linear.RealVector;
 
-public class VectorSensibilizadas extends ArrayRealVector {
+public class VectorSensibilizadas {
 
     private ArrayRealVector v;
 
