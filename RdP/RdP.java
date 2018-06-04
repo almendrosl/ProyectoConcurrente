@@ -7,7 +7,7 @@ import org.apache.commons.math3.linear.RealMatrix;
 
 public class RdP {
 
-    private VectorDeEstado vectorDeEstado;
+    private ArrayRealVector vectorDeEstado;
     private Array2DRowRealMatrix matrizI;
     private VectorSensibilizadas vectorSensibilizadas;
     private int transiciones;
@@ -17,13 +17,12 @@ public class RdP {
     {
         HashMap<String,Array2DRowRealMatrix> matrices = conjuntoInicial.getMatrices();
         HashMap<String,ArrayRealVector> vectores = conjuntoInicial.getVectores();
-        ArrayRealVector vaux = vectores.get("Marking");
-        this.vectorDeEstado = new VectorDeEstado(vaux);
-        this.matrizI =  matrices.get("Combined incidence matrix I");
-        vaux = vectores.get("Enabled transitions");
-        this.vectorSensibilizadas = new VectorSensibilizadas(vaux);
-        this.transiciones = matrizI.getColumnDimension();
-        this.plazas = matrizI.getRowDimension();
+        vectorDeEstado = vectores.get("Marking");
+        matrizI =  matrices.get("Combined incidence matrix I");
+        ArrayRealVector vaux = vectores.get("Enabled transitions");
+        vectorSensibilizadas = new VectorSensibilizadas(vaux);
+        transiciones = matrizI.getColumnDimension();
+        plazas = matrizI.getRowDimension();
     }
 
     public boolean disparar(int transicionDeseada){
@@ -31,7 +30,8 @@ public class RdP {
         disparo.set(0);
         disparo.setEntry(transicionDeseada,1);
         if(vectorSensibilizadas.estaSensibilizado(disparo)){
-            vectorDeEstado.calculoDeVectorEstado();
+            calculoDeVectorEstado(disparo);
+            vectorSensibilizadas.actualiceSensibilizadoT();
             return true;
         }
         else{
@@ -39,8 +39,12 @@ public class RdP {
         }
     }
 
+    private void calculoDeVectorEstado(ArrayRealVector disparo){
+        vectorDeEstado = vectorDeEstado.add(matrizI.operate(disparo));
+    }
+
     public ArrayRealVector getVectorDeEstado() {
-        return vectorDeEstado.getVec();
+        return vectorDeEstado;
     }
 
     public VectorSensibilizadas getSensibilizadas(){
