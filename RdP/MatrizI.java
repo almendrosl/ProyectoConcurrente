@@ -1,4 +1,6 @@
 package RdP;
 
-public class MatrizI {
+import org.apache.commons.math3.linear.Array2DRowRealMatrix;
+
+public class MatrizI extends Array2DRowRealMatrix {
 }
