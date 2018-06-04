@@ -13,7 +13,9 @@ public class VectorSensibilizadas {
     public boolean estaSensibilizado(ArrayRealVector disp){
         return true;
     }
-    public void actualiceSensibilizadoT(){
-    }
+
+    public void actualiceSensibilizadoT(ArrayRealVector marcado){}
+
+    public ArrayRealVector getV(){return v;}
 
 }
