@@ -8,7 +8,6 @@ public class RdP {
 
     private VectorDeEstado vectorDeEstado;
     private Array2DRowRealMatrix matrizI;
-    private Array2DRowRealMatrix matrizIback;
     private VectorSensibilizadas vectorSensibilizadas;
     private int transiciones;
     private int plazas;
@@ -24,8 +23,7 @@ public class RdP {
         HashMap<String,ArrayRealVector> vectores = conjuntoInicial.getVectores();
         vectorDeEstado = new VectorDeEstado(vectores.get("Marking"));
         matrizI =  matrices.get("Combined incidence matrix I");
-        matrizIback = matrices.get("Backwards incidence matrix I-");
-        vectorSensibilizadas = new VectorSensibilizadas(vectores.get("Enabled transitions"),matrizIback);
+        vectorSensibilizadas = new VectorSensibilizadas(vectores.get("Enabled transitions"),matrizI,matrices.get("Inhibition matrix H"));
         transiciones = matrizI.getColumnDimension();
         plazas = matrizI.getRowDimension();
     }
