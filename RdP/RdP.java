@@ -25,7 +25,7 @@ public class RdP {
         vectorDeEstado = new VectorDeEstado(vectores.get("Marking"));
         matrizI =  matrices.get("Combined incidence matrix I");
         matrizIback = matrices.get("Backwards incidence matrix I-");
-        vectorSensibilizadas = new VectorSensibilizadas(vectores.get("Enabled transitions"));
+        vectorSensibilizadas = new VectorSensibilizadas(vectores.get("Enabled transitions"),matrizIback);
         transiciones = matrizI.getColumnDimension();
         plazas = matrizI.getRowDimension();
     }

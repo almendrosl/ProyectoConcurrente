@@ -13,9 +13,9 @@ public class Main {
             e.printStackTrace();
         }
         System.out.println(documentoMatrices.getMatricesEstadoInicial().getMatrices().toString());
-        System.out.println(documentoMatrices.getMatricesEstadoInicial().getMatrices().get("Inhibition matrix H").toString());
+        System.out.println(documentoMatrices.getMatricesEstadoInicial().getMatrices().get("Inhibition matrix H").getRowVector(1).toString());
         System.out.println("Init");
-        RdP petrinet = new RdP(documentoMatrices.getMatricesEstadoInicial());
-        System.out.println(petrinet.getVectorDeEstado().toString());
+        //RdP petrinet = new RdP(documentoMatrices.getMatricesEstadoInicial());
+        //System.out.println(petrinet.getVectorDeEstado().toString());
     }
 }
