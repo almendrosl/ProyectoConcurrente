@@ -2,7 +2,6 @@ package Monitor;
 
 import org.apache.commons.math3.linear.*;
 
-
 public class Politicas {
     private Array2DRowRealMatrix matrizDePrioridades;
 
@@ -25,22 +24,22 @@ public class Politicas {
 
     public int masPrioridad(ArrayRealVector hilosPosiblesADisparar) {
         RealVector vectorPrioritario = matrizDePrioridades.operate(hilosPosiblesADisparar);
-
         int num = 0;
-        for (int i = vectorPrioritario.getDimension(); i >= 0; i--) {
+        for (int i = vectorPrioritario.getDimension()-1; i >= 0; i--) {
             if (vectorPrioritario.getEntry(i) > 0) {
                 num = i;
             }
             vectorPrioritario.setEntry(i, 0);
         }
-        vectorPrioritario.setEntry(num, 1);
-
-        RealVector transPrioritaria = matrizDePrioridades.operate(vectorPrioritario);
-
+        RealVector transPrioritaria = matrizDePrioridades.getRowVector(num);
         return transPrioritaria.getMaxIndex();
     }
 
     public void setPolitica(ArrayRealVector vectorPrioridades) {
         hacerMatrizDePrioridades(vectorPrioridades);
+    }
+
+    public Array2DRowRealMatrix getMatrizdePrioridades(){
+        return matrizDePrioridades;
     }
 }
