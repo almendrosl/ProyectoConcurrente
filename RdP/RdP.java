@@ -11,6 +11,7 @@ public class RdP {
     private VectorSensibilizadas vectorSensibilizadas;
     private int transiciones;
     private int plazas;
+    private SensibilizadoConTiempo tiempoControl;
 
     /*
         Este construtor toma la configuracion inicial, que es un objeto que tiene el conjunto de matrices (I+, I-, I, H)
