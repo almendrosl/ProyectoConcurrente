@@ -1,5 +1,4 @@
-import RdP.LectorHTML;
-import RdP.RdP;
+import RdP.*;
 
 import java.io.IOException;
 
